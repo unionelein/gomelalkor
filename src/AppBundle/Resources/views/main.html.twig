@@ -1,0 +1,48 @@
+{% extends '@App/base.html.twig' %}
+
+{% block content %}
+    <div class="text-center nav-wrapper">
+        <div class="nav-type">
+            <a class="first {% if type == 'all' %}active-type{% endif %}" title="Весь ассортимент" href="{{ path('mainpage') }}">Весь ассортимент</a>
+            <a {% if type == constant('AppBundle\\Services\\AppManager::PROKAT') %}class="active-type"{% endif %} title="Прокат электроинструмента в Гомеле" href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::PROKAT') }) }}"><h3>Прокат инструмента</h3></a>
+            <a class="last {% if type == constant('AppBundle\\Services\\AppManager::POKYPKA') %}active-type{% endif %}" title="Купить стройматериалы в Гомеле" href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::POKYPKA') }) }}"><h3>Стройматериалы</h3></a>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="menu-wrapper">
+        <div class="menu">
+            <a href="#" class="js-toggle-category toggle-category gradient1" title="Показать категории">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+                Категории
+            </a>
+            <nav class="category-nav">
+                <p class="category-header gradient1">Категории</p>
+                {% for category in categories %}
+                    {% set params = type == 'all' ? { categorySlug: category.slug } : {typeName: category.type, categorySlug: category.slug} %}
+                    {% set route = type == 'all' ? 'products_by_category' : 'products_by_category_and_type' %}
+                    <h3><a href="{{ path(route, params) }}"
+                       title="{% if category.type and category.type == 'pokypka' %}{{ category.products[0].type }}Купить{% elseif category.type %}Прокат{% endif %} {{ category.name }} в Гомеле"
+                       data-url="{{ path(route, params) }}"
+                       class="category js-category {% if currentCategory is defined and currentCategory == category.slug %}active-category{% endif %}">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        {{ category.name }}
+                    </a></h3>
+
+                {% endfor %}
+            </nav>
+        </div>
+    </div>
+
+    <div class="products-wrapper">
+        {% block production %}
+            {% if page is defined and page == 'product' %}
+                {% include '@App/product.html.twig' %}
+            {% else %}
+                {% include '@App/products.html.twig' %}
+            {% endif %}
+        {% endblock %}
+    </div>
+    <div class="clear"></div>
+
+{% endblock %}

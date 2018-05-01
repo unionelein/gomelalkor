@@ -1,0 +1,53 @@
+{% import _self as pageMacros %}
+
+{% macro page(page, value, currentPage) %}
+    <li class="{% if value == currentPage %}active{% endif %}">
+        {% set params = (app.request.attributes.get('_route_params') | merge({'page': page})) %}
+        <a class="js-page"
+           href="{{ path(app.request.attributes.get('_route'), params) }}"
+           data-url="{{ path(app.request.attributes.get('_route'), params) }}"
+        >
+            {{ value|raw }}
+        </a>
+    </li>
+{% endmacro %}
+
+{% for product in products %}
+    {% set type_name = product.type ? "stroymaterialy" : "instrumenti" %}
+    <a href="{{ path('product', { categorySlug: product.category.slug, productSlug: product.slug }) }}"
+       data-url="{{ path('product', { categorySlug: product.category.slug, productSlug: product.slug }) }}"
+       class="product-wrapper js-product">
+        <strong class="type {{ product.type ? "green" : "red" }}">{{ product.type ? "Покупка" : "Прокат" }}</strong>
+        <h3 class="name">{{ product.name }}</h3>
+        <div class="product-img">
+            <img src="{{ asset('images/' ~ product.imgMin) }}" alt="{{ product.name }}">
+        </div>
+        <h5 class="short-description">{{ product.shortDescription }}</h5>
+        <span class="price"><span class="number">{{ product.price }}</span> руб{% if type_name == "arenda" %}/сутки{% endif %}</span>
+    </a>
+{% else %}
+    <p class="text-info" style="margin: 40px 0 0 30%;">Похоже, что здесь ничего нет :(</p>
+{% endfor %}
+
+{% if countOfPages > 1  and currentPage <= countOfPages %}
+    <div class="clear"></div>
+    <div class="pag">
+        <ul class="pagination">
+            {% set offset = 2 %}
+
+            {% if currentPage > (offset + 1) %}
+                {{ pageMacros.page(currentPage - 1, '<i class="fa fa-angle-left"></i>', currentPage) }}
+            {% endif %}
+
+            {% for i in 1..countOfPages %}
+                {% if i >= (currentPage - offset) and i <= (currentPage + offset)  %}
+                    {{ pageMacros.page(i, i, currentPage) }}
+                {% endif %}
+            {% endfor %}
+
+            {% if currentPage < (countOfPages - offset - 1) %}
+                {{ pageMacros.page(currentPage + 1, '<i class="fa fa-angle-right"></i>', currentPage) }}
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}

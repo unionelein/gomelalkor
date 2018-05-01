@@ -1,0 +1,18 @@
+<div class="row product">
+    <div class="col-md-6 text-center img-wrapper">
+        <img src="{{ asset('images/' ~ product.imgBig) }}" alt="{{ product.name }}">
+        <strong class="type {{ product.type ? "green" : "red" }}">{{ product.type ? "Покупка" : "Прокат" }}</strong>
+    </div>
+
+    <div class="col-md-6 product-info">
+        <h2 class="product-name">{{ product.name }}</h2>
+        <h4 class="description">{{ product.description|nl2br }}</h4>
+        <span class="price"><span class="number">{{ product.price }}</span> руб{% if product.type == 0 %}/сутки{% endif %}</span>
+        {% if deliveryPrice is defined and deliveryPrice != 0 %}
+            <p class="delivery">При заказе на <span style="font-size: 20px;">{{ deliveryPrice }}</span>р и более доставка - бесплатно!</p>
+        {% endif %}
+    </div>
+</div>
+
+
+

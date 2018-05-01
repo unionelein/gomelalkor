@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="yandex-verification" content="2002867f274633f5" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>{% block title %}Алькор: прокат инструмента и продажа стройматериалов в Гомеле {% endblock %}</title>
+    <meta name="description" content="Прокат инструмента и продажа стройматериалов в Гомеле">
+    {% block stylesheets %}
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('fonts/fontawesome/css/font-awesome.min.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+</head>
+<body>
+    <header class="gradient">
+        <div class="row wrapper">
+
+            <div class="col-lg-3 col-md-5 col-sm-5 col-xs-5 logo-wrapper">
+                <div class="logo">
+                    <a href="{{ path('mainpage') }}" title="Алькор">
+                        <img src="{{ asset('images/logo.svg') }}" alt="Алькор">
+                    </a>
+                </div>
+            </div>
+
+            <div class="about col-lg-6 hidden-sm hidden-xs hidden-md">
+                <div class="headers-wrapper">
+                    <h1><i class="fa fa-handshake-o" aria-hidden="true"></i><strong> Прокат инструмента в Гомеле</strong></h1>
+                    <h1><i class="fa fa-inbox buy-icon" aria-hidden="true"></i><strong> Купить стройматериалы  в Гомеле</strong></h1>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-7 col-sm-7 col-xs-7 contacts-wrapper">
+                <div class="contacts">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> <span class="address">Гомель, ул. Лепешинского, 7</span><br>
+		    <div class="phones">
+    			<a href="tel:+375296474719" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i>+375 29 647-47-19</a><br>
+    			<a href="tel:+375336323622" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i>+375 33 632-36-22</a><br>
+    			<a href="tel:+375259900599" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i>+375 25 990-05-99</a><br>
+  		    </div>
+		    <a href="{{ path('contacts') }}" class="more">Подробнее</a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="main-content wrapper">
+
+        {% block content %}{% endblock %}
+
+        <div class="js-loader-wrapper hidden">
+            <div class="preloader-wrapper">
+                <div class="cssload-container">
+                    <div class="cssload-speeding-wheel"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="gradient1">
+        <div class="wrapper">
+            <div class="row footer">
+                <div class="col-md-4 col-sm-5 col-xs-5 company-wrapper">
+                    <div class="company">
+                        <h2>ОДО "Алькор" </h2> &copy; 2018
+
+                    </div>
+                </div>
+                <h2 class="col-md-4 hidden-sm hidden-xs text-center activity">
+                    Прокат инструмента и продажа строительных материалов в Гомеле
+                </h2>
+                <div class="col-md-4 col-sm-7 col-xs-7 footer-contacts-wrapper">
+                    <div class="right">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> <span class="address">Гомель, Лепешинского 7</span><br>
+			<div class="phones">
+    			    <a href="tel:+375296474719" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i>+375 29 647-47-19</a><br>
+			    <a href="tel:+375336323622" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i>+375 33 632-36-22</a><br>
+			    <a href="tel:+375259900599" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i>+375 25 990-05-99</a><br>
+			</div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    {% block javascripts %}
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/functions.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
+    {% endblock %}
+</body>
+</html>
