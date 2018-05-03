@@ -67,6 +67,21 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/contacts", name="contacts")
+     *
+     * @return Response
+     */
+    public function contactsAction()
+    {
+        $config = $this->getDoctrine()->getRepository(AppConfig::class)->findOneBy(['name' => AppConfig::CONTACTS_INFO]);
+        $info   = $config ? $config->getValue() : '';
+
+        return $this->render('@App/contacts.html.twig', [
+            'info' => $info,
+        ]);
+    }
+
+    /**
      * @Route("/{page}", name="mainpage", defaults={"page" = 1}, requirements={"page"="\d+"})
      *
      * @param $page
@@ -227,21 +242,6 @@ class DefaultController extends Controller
             'currentCategory' => $categorySlug,
             'deliveryPrice'   => $deliveryPrice,
             'title'           => $title,
-        ]);
-    }
-
-    /**
-     * @Route("/contacts", name="contacts")
-     *
-     * @return Response
-     */
-    public function contactsAction()
-    {
-        $config = $this->getDoctrine()->getRepository(AppConfig::class)->findOneBy(['name' => AppConfig::CONTACTS_INFO]);
-        $info   = $config ? $config->getValue() : '';
-
-        return $this->render('@App/contacts.html.twig', [
-            'info' => $info,
         ]);
     }
 }
