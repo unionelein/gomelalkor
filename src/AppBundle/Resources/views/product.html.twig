@@ -1,7 +1,7 @@
 <div class="row product">
     <div class="col-md-6 text-center img-wrapper">
         <img src="{{ asset('images/' ~ product.imgBig) }}" alt="{{ product.name }}">
-        <strong class="type {{ product.type ? "green" : "red" }}">{{ product.type ? "Покупка" : "Прокат" }}</strong>
+        <strong class="type {{ product.type ? "green" : "red" }}">{{ product.type == pokupka ? "Покупка" : "Прокат" }}</strong>
     </div>
 
     <div class="col-md-6 product-info">

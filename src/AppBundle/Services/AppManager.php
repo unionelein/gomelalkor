@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alexei
- * Date: 21.12.2017
- * Time: 13:55
- */
 
 namespace AppBundle\Services;
 
@@ -13,33 +7,25 @@ use Eventviva\ImageResize;
 
 class AppManager
 {
-    const PROKAT = "instrumenti";
-    const POKYPKA = "stroymaterialy";
-
-    const TYPE = [
-        self::PROKAT => 0,
-        self::POKYPKA => 1
-    ];
-
-    const TYPE_NAME = [
-        0 => self::PROKAT,
-        1 => self::POKYPKA
+    const PROKAT  = 0;
+    const POKUPKA = 1;
+    
+    const TYPE_URL = [
+        self::PROKAT  => 'instrumenty',
+        self::POKUPKA => 'strojmaterialy'
     ];
 
     public function __construct()
     {
     }
 
-    public function getTypeByName($name)
+    /**
+     * @param string $typeUrl
+     * @return false|int
+     */
+    static public function getTypeByUrl(string $typeUrl)
     {
-        switch ($name) {
-            case "instrumenti": case null:
-                return self::TYPE["instrumenti"];
-            case "stroymaterialy":
-                return self::TYPE["stroymaterialy"];
-            default:
-                return null;
-        }
+        return array_search($typeUrl, self::TYPE_URL, true);
     }
 
     static public function saveImg($file)

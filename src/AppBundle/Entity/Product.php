@@ -223,8 +223,8 @@ class Product
     public function getTypeName()
     {
         switch ($this->type) {
-            case AppManager::TYPE[AppManager::POKYPKA]: return 'Стройматериалы';
-            case AppManager::TYPE[AppManager::PROKAT]:  return 'Инструменты';
+            case AppManager::POKUPKA: return 'Стройматериалы';
+            case AppManager::PROKAT:  return 'Инструменты';
             default: return 'Не определен';
         }
     }

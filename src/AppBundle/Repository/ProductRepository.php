@@ -51,9 +51,10 @@ class ProductRepository extends EntityRepository
     }
 
     /**
+     * @param int|null $type
      * @return Product[]
      */
-    public function findAllProducts($type = null)
+    public function findAllProducts(int $type = null)
     {
         $qb = $this->createQueryBuilder('product')
             ->select('product');

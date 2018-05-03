@@ -5,7 +5,7 @@
     <meta name="yandex-verification" content="2002867f274633f5" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>{% block title %}Алькор: прокат инструмента и продажа стройматериалов в Гомеле {% endblock %}</title>
+    <title>{{ (title is defined and title) ? title : 'Прокат инструмента. Купить стройматериалы | Алькор' }}</title>
     <meta name="description" content="Прокат инструмента и продажа стройматериалов в Гомеле">
     {% block stylesheets %}
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -16,6 +16,11 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
 </head>
+
+{% set prokat  = constant('AppBundle\\Services\\AppManager::PROKAT') %}
+{% set pokupka = constant('AppBundle\\Services\\AppManager::POKUPKA') %}
+{% set typeUrl = constant('AppBundle\\Services\\AppManager::TYPE_URL') %}
+
 <body>
     <header class="gradient">
         <div class="row wrapper">
@@ -30,20 +35,28 @@
 
             <div class="about col-lg-6 hidden-sm hidden-xs hidden-md">
                 <div class="headers-wrapper">
-                    <h1><i class="fa fa-handshake-o" aria-hidden="true"></i><strong> Прокат инструмента в Гомеле</strong></h1>
-                    <h1><i class="fa fa-inbox buy-icon" aria-hidden="true"></i><strong> Купить стройматериалы  в Гомеле</strong></h1>
+
+                    {% if type is defined and type == prokat %}
+                        <h1 class="mt50"><i class="fa fa-handshake-o" aria-hidden="true"></i><strong> Прокат инструмента в Гомеле</strong></h1>
+                    {% elseif type is defined and type == pokupka %}
+                        <h1 class="mt50"><i class="fa fa-inbox buy-icon" aria-hidden="true"></i><strong> Купить стройматериалы  в Гомеле</strong></h1>
+                    {% else %}
+                        <h1><i class="fa fa-handshake-o" aria-hidden="true"></i><strong> Прокат инструмента в Гомеле</strong></h1>
+                        <h1><i class="fa fa-inbox buy-icon" aria-hidden="true"></i><strong> Купить стройматериалы  в Гомеле</strong></h1>
+                    {% endif %}
+
                 </div>
             </div>
 
             <div class="col-lg-3 col-md-7 col-sm-7 col-xs-7 contacts-wrapper">
                 <div class="contacts">
                     <i class="fa fa-map-marker" aria-hidden="true"></i> <span class="address">Гомель, ул. Лепешинского, 7</span><br>
-		    <div class="phones">
-    			<a href="tel:+375296474719" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i>+375 29 647-47-19</a><br>
-    			<a href="tel:+375336323622" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i>+375 33 632-36-22</a><br>
-    			<a href="tel:+375259900599" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i>+375 25 990-05-99</a><br>
-  		    </div>
-		    <a href="{{ path('contacts') }}" class="more">Подробнее</a>
+                    <div class="phones">
+                        <a href="tel:+375296474719" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i>+375 29 647-47-19</a><br>
+                        <a href="tel:+375336323622" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i>+375 33 632-36-22</a><br>
+                        <a href="tel:+375259900599" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i>+375 25 990-05-99</a><br>
+                    </div>
+                    <a href="{{ path('contacts') }}" class="more" title="Наши контакты">Подробнее</a>
                 </div>
             </div>
 
@@ -74,7 +87,7 @@
                     </div>
                 </div>
                 <h2 class="col-md-4 hidden-sm hidden-xs text-center activity">
-                    Прокат инструмента и продажа строительных материалов в Гомеле
+                    Прокат инструмента. Купить строительные материалы.
                 </h2>
                 <div class="col-md-4 col-sm-7 col-xs-7 footer-contacts-wrapper">
                     <div class="right">

@@ -226,7 +226,6 @@ header {
     padding: 0;
     margin: 30px auto 0 auto;
     font: 18px 'Roboto';
-    font-weight: bold;
 }
 
 .nav-type a {
@@ -653,6 +652,10 @@ footer .activity {
 .more:hover, .more:focus {
     color: #FFA;
     text-decoration: none;
+}
+
+.mt50 {
+    margin-top: 50px;
 }
 
 /** ======================= PRELOADER ===================================== */
