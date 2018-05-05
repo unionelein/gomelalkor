@@ -56,6 +56,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/stroimaterialy/{n}", name="stroimaterialy", defaults={"n"=1}, requirements={"n"="\d+"})
+     *
+     * @return Response
+     */
+    public function stroimaterialyAction($n)
+    {
+        return $this->redirectToRoute('homepage', ['typeName' => AppManager::TYPE_URL[AppManager::POKUPKA], 'page' => $n], 301);
+    }
+
+    /**
      * @Route("{typeName}/{categorySlug}/{page}", name="products_by_category_and_type", defaults={"categorySlug" = null, "page" = 1}, requirements={"page"="\d+","typeName"="(instrumenti|stroymaterialy)"})
      *
      * @param $categorySlug
