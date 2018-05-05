@@ -90,7 +90,13 @@
                     </div>
                 </div>
                 <h2 class="col-md-4 hidden-sm hidden-xs text-center activity">
-                    Прокат инструмента. Купить строительные материалы.
+                    {% if type is defined and type == prokat %}
+                        Прокат электроинструмента в Гомеле
+                    {% elseif type is defined and type == pokupka %}
+                        Интернет магазин стройматериалов - строительные материалы быстро и удобно
+                    {% else %}
+                        Прокат инструмента. Купить строительные материалы
+                    {% endif %}
                 </h2>
                 <div class="col-md-4 col-sm-7 col-xs-7 footer-contacts-wrapper">
                     <div class="right">
