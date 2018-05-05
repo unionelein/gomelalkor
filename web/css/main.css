@@ -408,6 +408,12 @@ header {
     transition: all 0.15s ease;
     text-decoration: none;
     color: #343434;
+    cursor: pointer;
+}
+
+.product-wrapper a {
+    color: #343434;
+    pointer-events: none;
 }
 
 .product-wrapper:hover {

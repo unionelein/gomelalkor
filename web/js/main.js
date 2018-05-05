@@ -7,9 +7,9 @@ $(document).ready(function() {
     //     handleCategoryOrProductClick(e);
     // });
     //
-    // $('.js-product').click(function (e) {
-    //     handleCategoryOrProductClick(e);
-    // });
+    $('.js-product').click(function (e) {
+        handleCategoryOrProductClick(e);
+    });
     //
     // $('.js-page').click(function (e) {
     //     window.scrollTo(0, 80);

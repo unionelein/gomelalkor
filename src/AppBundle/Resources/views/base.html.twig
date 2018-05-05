@@ -5,8 +5,9 @@
     <meta name="yandex-verification" content="2002867f274633f5" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>{{ (title is defined and title) ? title : 'Прокат инструмента. Купить стройматериалы | Алькор' }}</title>
-    <meta name="description" content="Прокат инструмента и продажа стройматериалов в Гомеле">
+    <title>{{ (title is defined and title) ? title : 'Прокат инструмента. Магазин стройматериалов | Алькор' }}</title>
+    <meta name="description" content="{{ (description is defined and description) ? description : 'Магазин стройматериалов в Гомеле. Прокат электроинструмента и продажа стройматериалов. Доставка. У нас все просто!' }}">
+    <meta name="keywords" content="Прокат инструмента, магазин стройматериалов, аренда электроинструмента, купить строительные материалы">
     {% block stylesheets %}
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('fonts/fontawesome/css/font-awesome.min.css') }}">
@@ -37,9 +38,11 @@
                 <div class="headers-wrapper">
 
                     {% if type is defined and type == prokat %}
-                        <h1 class="mt50"><i class="fa fa-handshake-o" aria-hidden="true"></i><strong> Прокат инструмента в Гомеле</strong></h1>
+                        <h1 class="text-center"><i class="fa fa-handshake-o" aria-hidden="true"></i><strong> Прокат инструмента в Гомеле</strong></h1>
+                        <h3 style="font-size: 18px; margin-top: 20px;">Аренда электроиструмента - действительно хорошая альтернатива покупке, ведь если инструмент вам нужен не часто - нет смысла переплачивать!</h3>
                     {% elseif type is defined and type == pokupka %}
-                        <h1 class="mt50"><i class="fa fa-inbox buy-icon" aria-hidden="true"></i><strong> Купить стройматериалы  в Гомеле</strong></h1>
+                        <h1 class="text-center"><i class="fa fa-inbox buy-icon" aria-hidden="true"></i><strong> Купить стройматериалы  в Гомеле</strong></h1>
+                        <h3 style="font-size: 18px; margin-top: 20px;">Благодаря инетернет магазинам строительных материалов купить стройматериал становится проще простого. Теперь достаточно просто выбрать и заказать!</h3>
                     {% else %}
                         <h1><i class="fa fa-handshake-o" aria-hidden="true"></i><strong> Прокат инструмента в Гомеле</strong></h1>
                         <h1><i class="fa fa-inbox buy-icon" aria-hidden="true"></i><strong> Купить стройматериалы  в Гомеле</strong></h1>

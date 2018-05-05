@@ -131,15 +131,21 @@ class DefaultController extends Controller
         $countOfPages = ceil(count($products)/self::COUNT_PER_PAGE);
         $products     = array_slice($products, ($page-1)*self::COUNT_PER_PAGE, self::COUNT_PER_PAGE);
 
+        $config        = $em->getRepository(AppConfig::class)->findOneBy(['name' => AppConfig::DELIVERY_PRICE]);
+        $deliveryPrice = $config ? $config->getValue() : 0;
+
         switch ($type) {
             case AppManager::POKUPKA:
-                $title = 'Купить стройматериалы в Гомеле | Алькор';
+                $title = 'Магазин стройматериалов. Купить стройматериалы в Гомеле | Алькор';
+                $description = 'Хотите купить стройматериалы по вменяемым ценами и без надувательства с качеством? Вам сюда. При заказе от ' . $deliveryPrice . 'р доставка - бесплатно!';
                 break;
             case AppManager::PROKAT:
-                $title = 'Прокат инструмента в Гомеле | Алькор';
+                $title = 'Прокат инструмента в Гомеле. Аренда электроинструмента | Алькор';
+                $description = 'Прокат электроинструмента в Гомеле. Широкий выбор: бензопилы, перфораторы, дрели и др. При заказе от ' . $deliveryPrice . 'р доставка - бесплатно!';
                 break;
             default:
                 $title = null;
+                $description = null;
         }
 
         return $this->render('@App/main.html.twig', [
@@ -149,6 +155,7 @@ class DefaultController extends Controller
             'countOfPages' => $countOfPages,
             'currentPage'  => $page,
             'title'        => $title,
+            'description'  => $description,
         ]);
     }
 
@@ -179,17 +186,23 @@ class DefaultController extends Controller
         $countOfPages = ceil(count($products)/self::COUNT_PER_PAGE);
         $products     = array_slice($products, ($page-1)*self::COUNT_PER_PAGE, self::COUNT_PER_PAGE);
 
+        $config        = $em->getRepository(AppConfig::class)->findOneBy(['name' => AppConfig::DELIVERY_PRICE]);
+        $deliveryPrice = $config ? $config->getValue() : 0;
+
         $type = \count($products) ? $products[0]->getType() : null;
 
         switch ($type) {
             case AppManager::POKUPKA:
                 $title = 'Купить ' . $category->getName() . ' в Гомеле | Алькор';
+                $description = 'Магазин стройматериалов. Купить ' . $category->getName().' по доступным ценам. При заказе от ' . $deliveryPrice . 'р доставка - бесплатно!';
                 break;
             case AppManager::PROKAT:
                 $title = 'Прокат ' . $category->getName() . ' в Гомеле | Алькор';
+                $description = 'Прокат электроинструмента в Гомеле. Аренда ' . $category->getName() . '. При заказе от ' . $deliveryPrice . 'р доставка - бесплатно!';
                 break;
             default:
                 $title = null;
+                $description = null;
         }
 
         return $this->render('@App/main.html.twig', [
@@ -199,6 +212,7 @@ class DefaultController extends Controller
             'countOfPages'    => $countOfPages,
             'currentPage'     => $page,
             'title'           => $title,
+            'description'     => $description,
         ]);
     }
 
@@ -226,12 +240,15 @@ class DefaultController extends Controller
         switch ($product->getType()) {
             case AppManager::POKUPKA:
                 $title = 'Купить ' . $product->getName() . ' в Гомеле | Алькор';
+                $description = 'Магазин стройматериалов. Купить ' . $product->getName() . '.Качественные стройматериалы по доступным ценам. При заказе от ' . $deliveryPrice . 'р доставка - бесплатно!';
                 break;
             case AppManager::PROKAT:
                 $title = 'Прокат ' . $product->getName() . ' в Гомеле | Алькор';
+                $description = 'Прокат электроинструмента в Гомеле. ' . $product->getName() . ' в прокат. При заказе от ' . $deliveryPrice . 'р доставка - бесплатно!';
                 break;
             default:
                 $title = null;
+                $description = null;
         }
 
         return $this->render('@App/main.html.twig', [
@@ -242,6 +259,7 @@ class DefaultController extends Controller
             'currentCategory' => $categorySlug,
             'deliveryPrice'   => $deliveryPrice,
             'title'           => $title,
+            'description'     => $description,
         ]);
     }
 }

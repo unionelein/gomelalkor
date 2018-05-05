@@ -13,18 +13,20 @@
 {% endmacro %}
 
 {% for product in products %}
-    <a href="{{ path('product', { categorySlug: product.category.slug, productSlug: product.slug }) }}"
-       data-url="{{ path('product', { categorySlug: product.category.slug, productSlug: product.slug }) }}"
-       class="product-wrapper js-product"
-    >
+    <div class="product-wrapper js-product">
         <strong class="type {{ product.type ? "green" : "red" }}">{{ product.type ? "Покупка" : "Прокат" }}</strong>
-        <p class="name" style="margin-top: 20px;">{{ product.name }}</p>
+        <p class="name" style="margin-top: 20px;">
+            <a href="{{ path('product', { categorySlug: product.category.slug, productSlug: product.slug }) }}"
+               title="{{ product.type ? "Купить" : "Прокат" }} {{ product.name }} в Гомеле"
+               class="js-product-link"
+            >{{ product.name }}</a>
+        </p>
         <div class="product-img">
             <img src="{{ asset('images/' ~ product.imgMin) }}" alt="{{ product.name }}">
         </div>
         <p class="short-description">{{ product.shortDescription }}</p>
         <span class="price"><span class="number">{{ product.price }}</span> руб{% if product.type == prokat %}/сутки{% endif %}</span>
-    </a>
+    </div>
 {% else %}
     <p class="text-info" style="margin: 40px 0 0 30%;">Похоже, что здесь ничего нет :(</p>
 {% endfor %}
