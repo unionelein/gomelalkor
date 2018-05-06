@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: httр://gomelalkor.by/sitemap.xml
+Sitemap: http://gomelalkor.by/sitemap.xml
 Host: http://gomelalkor.by
