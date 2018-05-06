@@ -177,7 +177,7 @@ class Product
             return;
         }
 
-        $imgName = AppManager::saveImg($file);
+        $imgName = AppManager::saveImg($file, $this->name);
 
         $this->imgBig = 'big-'.$imgName;
         $this->imgMin = 'min-'.$imgName;

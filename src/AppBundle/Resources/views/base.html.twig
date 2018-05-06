@@ -37,11 +37,13 @@
             <div class="about col-lg-6 hidden-sm hidden-xs hidden-md">
                 <div class="headers-wrapper">
 
+                    {% set h_level = (currentCategory is defined or product is defined) ? 2 : 1 %}
+
                     {% if type is defined and type == prokat %}
-                        <h1 class="text-center"><i class="fa fa-handshake-o" aria-hidden="true"></i><strong> Прокат инструмента в Гомеле</strong></h1>
-                        <h3 style="font-size: 18px; margin-top: 20px;"><strong>Аренда электроиструмента</strong> - действительно хорошая альтернатива покупке, ведь если инструмент вам нужен не часто - нет смысла переплачивать!</h3>
+                        <h{{ h_level }} class="text-center"><i class="fa fa-handshake-o" aria-hidden="true"></i><strong> Прокат инструмента в Гомеле</strong></h{{ h_level }}>
+                        <h3 style="font-size: 18px; margin-top: 20px;"><strong>Аренда иструмента</strong> - действительно хорошая альтернатива покупке, ведь если инструмент вам нужен не часто - нет смысла переплачивать!</h3>
                     {% elseif type is defined and type == pokupka %}
-                        <h1 class="text-center"><i class="fa fa-inbox buy-icon" aria-hidden="true"></i><strong> Купить стройматериалы  в Гомеле</strong></h1>
+                        <h{{ h_level }} class="text-center"><i class="fa fa-inbox buy-icon" aria-hidden="true"></i><strong> Купить стройматериалы  в Гомеле</strong></h{{ h_level }}>
                         <h3 style="font-size: 18px; margin-top: 20px;">Благодаря инетернет магазинам строительных материалов <strong>купить стройматериалы</strong> становится проще простого. Теперь достаточно просто выбрать и заказать!</h3>
                     {% else %}
                         <h1><i class="fa fa-handshake-o" aria-hidden="true"></i><strong> Прокат инструмента в Гомеле</strong></h1>

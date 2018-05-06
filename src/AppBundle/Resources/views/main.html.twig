@@ -22,7 +22,7 @@
                     <a href="{{ path('products_by_category', { categorySlug: category.slug }) }}"
                        title="{% if category.products[0].type == pokupka %}Купить{% else %}Прокат{% endif %} {{ category.name }} в Гомеле"
                        data-url="{{ path('products_by_category', { categorySlug: category.slug }) }}"
-                       class="category js-category {% if currentCategory is defined and currentCategory == category.slug %}active-category{% endif %}">
+                       class="category js-category {% if currentCategory is defined and currentCategory == category %}active-category{% endif %}">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         {{ category.name }}
                     </a>

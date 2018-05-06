@@ -217,8 +217,9 @@ class DefaultController extends Controller
 
         return $this->render('@App/main.html.twig', [
             'products'        => $products,
+            'type'            => $type,
             'categories'      => $categories,
-            'currentCategory' => $categorySlug,
+            'currentCategory' => $category,
             'countOfPages'    => $countOfPages,
             'currentPage'     => $page,
             'title'           => $title,
@@ -266,7 +267,7 @@ class DefaultController extends Controller
             'product'         => $product,
             'categories'      => $categories,
             'type'            => $product->getType(),
-            'currentCategory' => $categorySlug,
+            'currentCategory' => $product->getCategory(),
             'deliveryPrice'   => $deliveryPrice,
             'title'           => $title,
             'description'     => $description,

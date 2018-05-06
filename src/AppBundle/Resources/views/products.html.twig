@@ -12,6 +12,10 @@
     </li>
 {% endmacro %}
 
+{% if currentCategory is defined %}
+    <h1>{{ type == prokat ? 'Прокат' : 'Купить' }} {{ currentCategory.name }}</h1>
+{% endif %}
+
 {% for product in products %}
     <div class="product-wrapper js-product">
         <strong class="type {{ product.type ? "green" : "red" }}">{{ product.type ? "Покупка" : "Прокат" }}</strong>

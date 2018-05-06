@@ -28,7 +28,7 @@ class AppManager
         return array_search($typeUrl, self::TYPE_URL, true);
     }
 
-    static public function saveImg($file)
+    static public function saveImg($file, $name)
     {
 
         $dir = is_dir('images/') ? 'images/' : __DIR__.'/../../../web/'.'images/';
@@ -46,7 +46,7 @@ class AppManager
             default: $type = '.swf';
         }
 
-        $imgName = 'img'.time().rand(1, 1000).$type;
+        $imgName = 'img-' . $name . '-' . time() . $type;
 
         $img->quality_jpg = 90;
         $img->resizeToBestFit(450, 550);

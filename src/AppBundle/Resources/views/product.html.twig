@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-md-6 product-info">
-        <h2 class="product-name">{{ product.name }}</h2>
+        <h1 class="product-name">{{ type == prokat ? 'Прокат' : 'Купить' }} {{ product.name }}</h1>
         <h4 class="description">{{ product.description|nl2br }}</h4>
         <span class="price"><span class="number">{{ product.price }}</span> руб{% if product.type == 0 %}/сутки{% endif %}</span>
         {% if deliveryPrice is defined and deliveryPrice != 0 %}
