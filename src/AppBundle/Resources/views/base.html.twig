@@ -5,8 +5,9 @@
     <meta name="yandex-verification" content="2002867f274633f5" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>{{ (title is defined and title) ? title : 'Прокат инструмента. Магазин стройматериалов | Алькор' }}</title>
-    <meta name="description" content="{{ (description is defined and description) ? description : 'Магазин стройматериалов в Гомеле. Прокат электроинструмента и продажа стройматериалов. Доставка. У нас все просто!' }}">
+    {% set pageInfo = (currentPage is defined and currentPage > 1) ? '. Страница ' ~ currentPage : '' %}
+    <title>{{ (title is defined and title) ? title : 'Прокат инструмента. Магазин стройматериалов' ~ pageInfo ~ ' | Алькор' }}</title>
+    <meta name="description" content="{{ (description is defined and description) ? description : 'Магазин стройматериалов в Гомеле. Прокат электроинструмента и продажа стройматериалов. Доставка' ~ pageInfo }}">
     <meta name="keywords" content="Прокат инструмента, магазин стройматериалов, аренда электроинструмента, купить строительные материалы">
     {% block stylesheets %}
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
