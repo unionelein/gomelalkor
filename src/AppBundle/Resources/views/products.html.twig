@@ -18,7 +18,7 @@
 
 {% for product in products %}
     <div class="product-wrapper js-product">
-        <strong class="type {{ product.type ? "green" : "red" }}">{{ product.type ? "Покупка" : "Прокат" }}</strong>
+        <span class="type {{ product.type ? "green" : "red" }}">{{ product.type ? "Покупка" : "Прокат" }}</span>
         <p class="name" style="margin-top: 20px;">
             <a href="{{ path('product', { categorySlug: product.category.slug, productSlug: product.slug }) }}"
                title="{{ product.type ? "Купить" : "Прокат" }} {{ product.name }} в Гомеле"

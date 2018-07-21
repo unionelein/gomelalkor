@@ -664,6 +664,19 @@ footer .activity {
     margin-top: 50px;
 }
 
+.advantages-description {
+    margin: 0 2%;
+    padding: 25px 0;
+    border-top: 1px solid #ECF0F1;
+
+}
+
+.advantages-description p {
+    margin: 3px 0;
+    padding: 0;
+    text-indent: 2em;
+}
+
 /** ======================= PRELOADER ===================================== */
 
 .preloader-wrapper {
